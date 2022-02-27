@@ -13,31 +13,32 @@ using namespace std;
 
 cv::Mat reziseImg(cv::Mat& img)
 {
+	cout << "Image size: " << img.size() << endl;
+
 	cv::Mat img_resized;
 
-	cv::resize(img, img_resized, Size(400, 300), cv::INTER_AREA);
+		
+	if (img.rows > 750 || img.cols > 750)
+	{
+		cout << "Image is bigger than the specification." << endl;
+		float scale_percent = 60.0; // percent of original size
+		int width = int(img.cols * scale_percent / 100);
+		int height = int(img.rows * scale_percent / 100);
+		cout << "Image width: " << img.cols << " Image height: " << img.rows << endl;
+
+		//resize image
+		cv::resize(img, img_resized, Size(width, height), cv::INTER_AREA);
+		cout << "Image resized!! New image size: " << img_resized.size() << endl;
+		//return img_resized;
+	}
+	else 
+	{
+		cout << "image OKAY" << endl;
+		img_resized = img;
+		//return img;
+	}
 
 	return img_resized;
-
-	//if (img.rows || img.cols > 750) {
-	//	float scale_percent = 50.0; // percent of original size
-	//	int width = int(img.cols * scale_percent / 100);
-	//	int height = int(img.rows * scale_percent / 100);
-	//	cout << "Image width: " << img.cols << " Image height: " << img.rows << endl;
-	//	cout << "Image resized"  << endl;
-	//	cout << (img.rows || img.cols > 750) << endl;
-	//	//resize image
-	//	cv::resize(img, img_resized, Size(width, height), cv::INTER_AREA);
-
-	//	//return img_resized;
-	//}
-	//else {
-	//	cout << "image OKAY" << endl;
-	//	img_resized = img;
-	//	//return img;
-	//}
-
-	//return img_resized;
 	
 }
 
@@ -61,9 +62,7 @@ void show(string window_name, cv::Mat img)
 cv::Mat gray_image(cv::Mat& img)
 {
 	cv::Mat img_gray;
-	cv::Mat img_resized;
-	img_resized = reziseImg(img);
-	cv::cvtColor(img_resized, img_gray, cv::COLOR_BGR2GRAY);
+	cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
 	//show("Gray image", img_gray);
 
 	return img_gray;
@@ -179,7 +178,7 @@ cv::Mat imgOpen(cv::Mat& img)
 vector<Vec3f> imgDetectCircles(cv::Mat& img)
 {
 	vector<Vec3f> circles_hough;
-	cv::HoughCircles(img, circles_hough, cv::HOUGH_GRADIENT, 1.5, 30, 80, 55, 10, 55);
+	cv::HoughCircles(img, circles_hough, cv::HOUGH_GRADIENT, 1.5, 50, 80, 55, 15, 75);
 	
 	cout << "Coins detected: " << circles_hough.size() << endl;
 	
@@ -262,9 +261,9 @@ int main() {
 	
 	cv::Mat img_blur, img_GaussBlur, img_MedianFilter;
 	 
-	//img_blur = smoothing(img);
-	img_GaussBlur = smoothingGaussian(img);
-	//img_MedianFilter = smoothingMedian(img);
+	//img_blur = smoothing(img_formated);
+	img_GaussBlur = smoothingGaussian(img_formated);
+	//img_MedianFilter = smoothingMedian(img_formated);
 	//show("Image blurring Averaging", img_blur);
 	//show("Image Gaussian Blur", img_GaussBlur);
 
