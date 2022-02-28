@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include<opencv2/core.hpp>
 #include<opencv2/highgui.hpp>
 #include<opencv2/imgcodecs.hpp>
@@ -8,6 +9,30 @@
 
 using namespace cv;
 using namespace std;
+
+
+
+void writeFile(string img_name, vector<Vec3f> circles_hough)
+{
+	ofstream Myfile("DetectedCirclesINFO_" + img_name + ".txt");
+
+	Myfile << "Were detected " + to_string(circles_hough.size()) + " circles in the image: " + img_name << endl;
+
+	for (size_t i = 0; i < circles_hough.size(); i++)
+	{
+		Point center(cvRound(circles_hough[i][0]), cvRound(circles_hough[i][1]));
+		int radius = cvRound(circles_hough[i][2]);
+		// write circle info to the txt file
+		Myfile << "Circle " + to_string(i + 1) + " - Center point: (" + to_string(cvRound(circles_hough[i][0])) +
+			"," + to_string(cvRound(circles_hough[i][1])) + ") radius: " + to_string(radius) << endl;
+	}
+
+	Myfile.close();
+	
+}
+
+
+
 
 
 
@@ -182,10 +207,11 @@ vector<Vec3f> imgDetectCircles(cv::Mat& img)
 	
 	cout << "Coins detected: " << circles_hough.size() << endl;
 	
-	
-
 	return circles_hough;
 }
+
+
+
 
 
 void drawCircles(cv::Mat img, vector<Vec3f> circles_hough) 
@@ -200,6 +226,8 @@ void drawCircles(cv::Mat img, vector<Vec3f> circles_hough)
 		int radius = cvRound(circles_hough[i][2]);
 		// draw the circle center
 		circle(img_draw, center, 5, Scalar(255, 0, 0), -1, 2, 0);
+		// draw/write number
+		putText(img_draw, to_string(i+1), center, cv::FONT_HERSHEY_DUPLEX, 0.45, Scalar(0,255,255), 1);		
 		// draw the circle outline
 		circle(img_draw, center, radius, Scalar(0, 0, 255), 3, 2, 0);
 	}
@@ -314,7 +342,7 @@ int main() {
 	img_open = imgOpen(img_Otsu_norm);
 
 	//imshow("Dilatation MORPH_RECT and 5x5", img_dilate);
-	imshow("Open Morphological Transformation", img_open);
+	//imshow("Open Morphological Transformation", img_open);
 
 	
 
@@ -326,6 +354,7 @@ int main() {
 
 	vector<Vec3f> circles_hough;
 	circles_hough = imgDetectCircles(img_open);
+	
 	
 
 
@@ -339,8 +368,11 @@ int main() {
 
 
 
+	//**************************************************************//
+	//                Write File with Circles info                  //
+	//**************************************************************//
 
-
+	writeFile(img_name, circles_hough);
 
 
 
