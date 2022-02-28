@@ -1,6 +1,6 @@
 # Final Project  - 2D image processing - HSE / Coursera
 
-This file contain instructions for the final project of the coursera course from HSE University - 2D Image Processing.
+This file contains instructions for the final project of the Coursera course from HSE University - 2D Image Processing.
 The implementation is coded in C++.
 
 ## Used Softwares
