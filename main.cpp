@@ -28,10 +28,21 @@ void writeFile(string img_name, vector<Vec3f> circles_hough)
 	}
 
 	Myfile.close();
+
+	cout << "Please, see file: DetectedCirclesINFO_" + img_name + ".txt for detailed results." << endl;
 	
 }
 
 
+
+
+
+
+void savePicture(string img_name, cv::Mat& img)
+{
+	cv::imwrite("DetectedCircles_" + img_name, img);
+	cout << "Please, see file: DetectedCircles_" + img_name + " for the result picture." << endl;
+}
 
 
 
@@ -214,7 +225,7 @@ vector<Vec3f> imgDetectCircles(cv::Mat& img)
 
 
 
-void drawCircles(cv::Mat img, vector<Vec3f> circles_hough) 
+void drawCircles(string img_name, cv::Mat img, vector<Vec3f> circles_hough) 
 {
 
 	cv::Mat img_draw;
@@ -230,9 +241,14 @@ void drawCircles(cv::Mat img, vector<Vec3f> circles_hough)
 		putText(img_draw, to_string(i+1), center, cv::FONT_HERSHEY_DUPLEX, 0.45, Scalar(0,255,255), 1);		
 		// draw the circle outline
 		circle(img_draw, center, radius, Scalar(0, 0, 255), 3, 2, 0);
+
+		cout << "Circle " + to_string(i + 1) + " - Center point: (" + to_string(cvRound(circles_hough[i][0])) +
+			"," + to_string(cvRound(circles_hough[i][1])) + ") radius: " + to_string(radius) << endl;
 	}
 	
 	show("circles", img_draw);
+
+	savePicture(img_name, img_draw);
 
 	
 
@@ -359,11 +375,11 @@ int main() {
 
 
 	//**************************************************************//
-	//                Drawing Circles			                    //
+	//                Drawing Circles and save picture              //
 	//**************************************************************//
 
 	
-	drawCircles(img_formated, circles_hough);
+	drawCircles(img_name, img_formated, circles_hough);
 
 
 

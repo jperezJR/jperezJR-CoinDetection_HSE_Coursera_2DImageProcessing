@@ -1,0 +1,17 @@
+Were detected 16 circles in the image: coins8.jpg
+Circle 1 - Center point: (308,148) radius: 53
+Circle 2 - Center point: (122,253) radius: 48
+Circle 3 - Center point: (131,56) radius: 59
+Circle 4 - Center point: (44,116) radius: 37
+Circle 5 - Center point: (206,304) radius: 38
+Circle 6 - Center point: (241,55) radius: 56
+Circle 7 - Center point: (211,149) radius: 48
+Circle 8 - Center point: (37,43) radius: 35
+Circle 9 - Center point: (352,227) radius: 39
+Circle 10 - Center point: (40,187) radius: 38
+Circle 11 - Center point: (353,305) radius: 39
+Circle 12 - Center point: (280,299) radius: 37
+Circle 13 - Center point: (350,50) radius: 51
+Circle 14 - Center point: (208,232) radius: 38
+Circle 15 - Center point: (277,230) radius: 36
+Circle 16 - Center point: (124,158) radius: 49

@@ -1,0 +1,11 @@
+Were detected 10 circles in the image: coins1.jpg
+Circle 1 - Center point: (518,205) radius: 69
+Circle 2 - Center point: (367,205) radius: 69
+Circle 3 - Center point: (457,352) radius: 64
+Circle 4 - Center point: (134,356) radius: 61
+Circle 5 - Center point: (73,205) radius: 63
+Circle 6 - Center point: (298,352) radius: 72
+Circle 7 - Center point: (217,208) radius: 67
+Circle 8 - Center point: (289,71) radius: 62
+Circle 9 - Center point: (443,80) radius: 42
+Circle 10 - Center point: (133,80) radius: 49
