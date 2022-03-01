@@ -1,7 +1,9 @@
 *.sln
 *.vcxproj
 *.vcxproj.filters
-
+*.docx
+*.pdf
+*.zip
 
 # Prerequisites
 *.d
