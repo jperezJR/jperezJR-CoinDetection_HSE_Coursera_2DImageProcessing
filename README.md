@@ -69,9 +69,11 @@ Please, see file: DetectedCirclesINFO_coins4.jpg.txt for detailed results.
 ```
 
 
-<img src="DetectedCircles_coins4.jpg"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
+
+
+<p align="center">
+  <img src="DetectedCircles_coins4.jpg" width="400" />
+</p>
 
 
 ## Contributing
@@ -81,3 +83,10 @@ Please make sure to update tests as appropriate.
 
 
 Thank you! ;)
+:octocat: :v:
+
+
+
+## License
+
+:balance_scale: [MIT](https://choosealicense.com/licenses/mit/)
