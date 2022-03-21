@@ -76,6 +76,11 @@ Please, see file: DetectedCirclesINFO_coins4.jpg.txt for detailed results.
 </p>
 
 
+Nice dataset with [circulating Coin Sets of the World](http://worldcoingallery.com/countries/circ_sets/index.htm)
+
+
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
